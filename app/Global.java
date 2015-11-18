@@ -58,6 +58,20 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Minitestes"));
 		si1.addTema(new Tema("Projeto"));
 		dao.persist(si1);
+		Disciplina si2 = new Disciplina("Sistemas de Informação 2");
+		si1.addTema(new Tema("Análise x Design"));
+		si1.addTema(new Tema("Orientação a objetos"));
+		si1.addTema(new Tema("GRASP"));
+		si1.addTema(new Tema("GoF"));
+		si1.addTema(new Tema("Arquitetura"));
+		si1.addTema(new Tema("Play"));
+		si1.addTema(new Tema("JavaScript"));
+		si1.addTema(new Tema("HTML / CSS / Bootstrap"));
+		si1.addTema(new Tema("Heroku"));
+		si1.addTema(new Tema("Labs"));
+		si1.addTema(new Tema("Minitestes"));
+		si1.addTema(new Tema("Projeto"));
+		dao.persist(si2);
 		dao.flush();
 	}
 }

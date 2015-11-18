@@ -33,16 +33,23 @@
             			<div class="uk-panel-header">
             				<h3 class="uk-panel-title">Menu</h3>
             			</div>
-						<ul class="uk-nav uk-nav-side">
-							<li class="uk-divider"></li>
-							@for(disciplina <- disciplinas){
-           						<li class="uk-nav-header"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
-            					@for(tema <- disciplina.getTemas()){
-           							<li class="uk-parent"><a href="/tema/@tema.getId()">@tema.getName()</a></li>
-								}
-								<li class="uk-divider"></li>
-							}
-            			</ul>
+                        <div class="uk-button-dropdown uk-align-left" data-uk-dropdown="{mode:'click'}">
+                            <button class="uk-button uk-button-link uk-align-left"> Disciplinas
+            		        <i class="uk-icon-caret-down"></i>
+            				</button>
+            				<div class="uk-dropdown">
+            				    <ul class="uk-nav uk-nav-dropdown uk-text-center">
+                                    @for(disciplina <- disciplinas){
+                                        <li class="uk-nav-header"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
+                                        <ul class="uk-nav uk-nav-dropdown uk-text-center">
+                                         @for(tema <- disciplina.getTemas()){
+            							        <li class="uk-active"><a href="/tema/@tema.getId()">@tema.getName()</a></li>
+                                         }
+                                         </ul>
+                                    }
+                                </ul>
+            				</div>
+                        </div>
             		</div>
             	</div>
             	<!-- ---------------- MAIN CONTENT ---------------- -->
@@ -54,7 +61,7 @@
 	            			</div>
             				<hr class="uk-article-divider-orange">
             			</div>
-            			<p>Escolha uma disciplina ou tema ao lado para acessar os leites.</p>
+            			<p>Escolha uma disciplina ao lado para acessar os leites.</p>
             		</div>
             	</div>
             </div>
