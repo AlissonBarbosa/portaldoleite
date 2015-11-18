@@ -1,4 +1,4 @@
-name := """PortalDoLeite"""
+name := """projeto20151"""
 
 version := "1.0-SNAPSHOT"
 
