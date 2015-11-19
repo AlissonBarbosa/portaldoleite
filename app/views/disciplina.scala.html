@@ -41,7 +41,7 @@
 							@for(disciplina <- disciplinas){
             					@if(disciplina.getId() == disciplinaAtual.getId()){
             						<li class="uk-nav-header uk-active"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
-            					} else {
+            					}else {
             						<li class="uk-nav-header"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
             					}
             					@for(tema <- disciplina.getTemas()){
