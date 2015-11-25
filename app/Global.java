@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import models.DicaAssunto;
+import models.DicaDisciplina;
+import models.DicaConselho;
+import models.Dica;
 import models.User;
 import models.Disciplina;
 import models.Tema;
@@ -15,7 +19,10 @@ public class Global extends GlobalSettings {
 
 	private static GenericDAOImpl dao = new GenericDAOImpl();
 	private List<Disciplina> disciplinas = new ArrayList<>();
-	
+	private Disciplina si1 = new Disciplina("Sistemas de Informação 1");
+	private Disciplina eda = new Disciplina("Estrutuda de Dados");
+	private Disciplina p2 = new Disciplina("Programação II");
+
 	@Override
 	public void onStart(Application app) {
 		Logger.info("Aplicação inicializada...");
@@ -27,6 +34,7 @@ public class Global extends GlobalSettings {
 					criaDisciplinaTemas();
 				}
 				addUsuario();
+				addDica();
 			}
 		});
 	}
@@ -46,7 +54,6 @@ public class Global extends GlobalSettings {
 	}
 	
 	private void criaDisciplinaTemas(){
-		Disciplina si1 = new Disciplina("Sistemas de Informação 1");
 		si1.addTema(new Tema("Análise x Design"));
 		si1.addTema(new Tema("Orientação a objetos"));
 		si1.addTema(new Tema("GRASP"));
@@ -61,7 +68,6 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Projeto"));
 		dao.persist(si1);
 
-		Disciplina eda = new Disciplina("Estrutuda de Dados");
 		eda.addTema(new Tema("Notação Assintótica"));
 		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
 		eda.addTema(new Tema("Ordenação por comparação"));
@@ -76,7 +82,6 @@ public class Global extends GlobalSettings {
 		eda.addTema(new Tema("Árvores"));
 		dao.persist(eda);
 
-		Disciplina p2 = new Disciplina("Programação II");
 		p2.addTema(new Tema("Introdução a Java"));
 		p2.addTema(new Tema("Introdução a OO"));
 		p2.addTema(new Tema("Criação de Classes"));
