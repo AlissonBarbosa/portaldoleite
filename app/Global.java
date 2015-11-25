@@ -60,6 +60,7 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Minitestes"));
 		si1.addTema(new Tema("Projeto"));
 		dao.persist(si1);
+
 		Disciplina eda = new Disciplina("Estrutuda de Dados");
 		eda.addTema(new Tema("Notação Assintótica"));
 		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
@@ -74,6 +75,7 @@ public class Global extends GlobalSettings {
 		eda.addTema(new Tema("AVL"));
 		eda.addTema(new Tema("Árvores"));
 		dao.persist(eda);
+
 		Disciplina p2 = new Disciplina("Programação II");
 		p2.addTema(new Tema("Introdução a Java"));
 		p2.addTema(new Tema("Introdução a OO"));
@@ -93,5 +95,45 @@ public class Global extends GlobalSettings {
 		User usuario1 = new User("antonio@nsa.com", "antonio123", "antonio");
 		usuario1.setNome("Antonio");
 		dao.persist(usuario1);
+
+		User usuario2 = new User("carlos@nsa.com", "carlos123", "carlos");
+		usuario2.setNome("Carlos");
+		dao.persist(usuario2);
+
+		User usuario3 = new User("maria@nsa.com", "maria123", "maria");
+		usuario3.setNome("Maria");
+		dao.persist(usuario3);
+
+		User usuario4 = new User("mariana@nsa.com", "mariana123", "mariana");
+		usuario4.setNome("Mariana");
+		dao.persist(usuario4);
+
+		User usuario5 = new User("andre@nsa.com", "andre123", "andre");
+		usuario5.setNome("Andre");
+		dao.persist(usuario5);
+
+		User usuario6 = new User("ironman@nsa.com", "ironman123", "ironman");
+		usuario6.setNome("IronMan");
+		dao.persist(usuario6);
+
+		User usuario7 = new User("batman@nsa.com", "batman123", "batman");
+		usuario7.setNome("Batman");
+		dao.persist(usuario7);
+
+		User usuario8 = new User("hulk@nsa.com", "hulk123", "hulk");
+		usuario8.setNome("Hulk");
+		dao.persist(usuario8);
+
+		User usuario9 = new User("fenix@nsa.com", "fenix123", "fenix");
+		usuario9.setNome("Fenix");
+		dao.persist(usuario9);
+
+		User usuario10 = new User("tux@nsa.com", "tux123", "tux");
+		usuario10.setNome("The Penguin");
+		dao.persist(usuario10);
+	}
+
+	private void addDica(){
+
 	}
 }
