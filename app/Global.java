@@ -164,6 +164,17 @@ public class Global extends GlobalSettings {
 	}
 
 	private void addDica(){
+		// Dicas para SI
+		//Dica dica1 = new DicaConselho("Faça todos os Labs");
+		//dica1.setTema(si1.getTemaByNome("Labs"));
+		//dica1.setUser("Antonio");
+		//dao.persist(dica1);
+
+		// Dicas para EDA
+		//Dica dica2 = new DicaDisciplina("P2","É muito importante que aprenda o máximo de JAVA nessa disciplina");
+		//dica2.setTema(eda.getTemaByNome("Ordenação por comparação"));
+		//dica2.setUser("Hulk");
+		//dao.persist(dica2);
 
 	}
 }
