@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
-
 import models.DicaAssunto;
 import models.DicaConselho;
 import models.DicaDisciplina;
 import models.DicaMaterial;
+import models.DicaDisciplina;
+import models.DicaConselho;
+import models.Dica;
 import models.User;
 import models.Disciplina;
 import models.Tema;
@@ -19,7 +21,10 @@ public class Global extends GlobalSettings {
 
 	private static GenericDAOImpl dao = new GenericDAOImpl();
 	private List<Disciplina> disciplinas = new ArrayList<>();
-	
+	private Disciplina si1 = new Disciplina("Sistemas de Informação 1");
+	private Disciplina eda = new Disciplina("Estrutuda de Dados");
+	private Disciplina p2 = new Disciplina("Programação II");
+
 	@Override
 	public void onStart(Application app) {
 		Logger.info("AplicaÃ§Ã£o inicializada...");
@@ -31,6 +36,7 @@ public class Global extends GlobalSettings {
 					criaDisciplinaTemas();
 				}
 				addUsuario();
+				addDica();
 			}
 		});
 	}
@@ -53,6 +59,8 @@ public class Global extends GlobalSettings {
 		Disciplina si1 = new Disciplina("Sistemas de InformaÃ§Ã£o 1");
 		si1.addTema(new Tema("AnÃ¡lise x Design"));
 		si1.addTema(new Tema("OrientaÃ§Ã£o a objetos"));
+		si1.addTema(new Tema("Análise x Design"));
+		si1.addTema(new Tema("Orientação a objetos"));
 		si1.addTema(new Tema("GRASP"));
 		si1.addTema(new Tema("GoF"));
 		si1.addTema(new Tema("Arquitetura"));
@@ -72,6 +80,10 @@ public class Global extends GlobalSettings {
 		eda.addTema(new Tema("AnÃ¡lise de Algoritmos Recursivos"));
 		eda.addTema(new Tema("OrdenaÃ§Ã£o por comparaÃ§Ã£o"));
 		eda.addTema(new Tema("OrdenaÃ§Ã£o por tempo linear"));
+		eda.addTema(new Tema("Notação Assintótica"));
+		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
+		eda.addTema(new Tema("Ordenação por comparação"));
+		eda.addTema(new Tema("Ordenação por tempo linear"));
 		eda.addTema(new Tema("TAD"));
 		eda.addTema(new Tema("Listas encadeadas"));
 		eda.addTema(new Tema("ABP"));
@@ -90,6 +102,9 @@ public class Global extends GlobalSettings {
 		p2.addTema(new Tema("IntroduÃ§Ã£o a Java"));
 		p2.addTema(new Tema("IntroduÃ§Ã£o a OO"));
 		p2.addTema(new Tema("CriaÃ§Ã£o de Classes"));
+		p2.addTema(new Tema("Introdução a Java"));
+		p2.addTema(new Tema("Introdução a OO"));
+		p2.addTema(new Tema("Criação de Classes"));
 		p2.addTema(new Tema("Testes de unidade"));
 		p2.addTema(new Tema("ColeÃ§Ãµes"));
 		p2.addTema(new Tema("Reuso, ComposiÃ§Ã£o e HeranÃ§a"));
