@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import models.DicaAssunto;
+import models.DicaConselho;
+import models.DicaDisciplina;
+import models.DicaMaterial;
 import models.User;
 import models.Disciplina;
 import models.Tema;
@@ -18,7 +22,7 @@ public class Global extends GlobalSettings {
 	
 	@Override
 	public void onStart(Application app) {
-		Logger.info("Aplicação inicializada...");
+		Logger.info("AplicaÃ§Ã£o inicializada...");
 
 		JPA.withTransaction(new play.libs.F.Callback0() {
 			@Override
@@ -36,7 +40,7 @@ public class Global extends GlobalSettings {
 	    JPA.withTransaction(new play.libs.F.Callback0() {
 	    @Override
 	    public void invoke() throws Throwable {
-	        Logger.info("Aplicação finalizando...");
+	        Logger.info("AplicaÃ§Ã£o finalizando...");
 	        disciplinas = dao.findAllByClassName("Disciplina");
 
 	        for (Disciplina disciplina: disciplinas) {
@@ -46,9 +50,9 @@ public class Global extends GlobalSettings {
 	}
 	
 	private void criaDisciplinaTemas(){
-		Disciplina si1 = new Disciplina("Sistemas de Informação 1");
-		si1.addTema(new Tema("Análise x Design"));
-		si1.addTema(new Tema("Orientação a objetos"));
+		Disciplina si1 = new Disciplina("Sistemas de InformaÃ§Ã£o 1");
+		si1.addTema(new Tema("AnÃ¡lise x Design"));
+		si1.addTema(new Tema("OrientaÃ§Ã£o a objetos"));
 		si1.addTema(new Tema("GRASP"));
 		si1.addTema(new Tema("GoF"));
 		si1.addTema(new Tema("Arquitetura"));
@@ -59,13 +63,15 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Labs"));
 		si1.addTema(new Tema("Minitestes"));
 		si1.addTema(new Tema("Projeto"));
+		
+		si1.getTemaByNome("Labs").addDica(new DicaConselho("Melhor começar o quanto antes."));
 		dao.persist(si1);
 
 		Disciplina eda = new Disciplina("Estrutuda de Dados");
-		eda.addTema(new Tema("Notação Assintótica"));
-		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
-		eda.addTema(new Tema("Ordenação por comparação"));
-		eda.addTema(new Tema("Ordenação por tempo linear"));
+		eda.addTema(new Tema("NotaÃ§Ã£o AssintÃ³tica"));
+		eda.addTema(new Tema("AnÃ¡lise de Algoritmos Recursivos"));
+		eda.addTema(new Tema("OrdenaÃ§Ã£o por comparaÃ§Ã£o"));
+		eda.addTema(new Tema("OrdenaÃ§Ã£o por tempo linear"));
 		eda.addTema(new Tema("TAD"));
 		eda.addTema(new Tema("Listas encadeadas"));
 		eda.addTema(new Tema("ABP"));
@@ -73,21 +79,30 @@ public class Global extends GlobalSettings {
 		eda.addTema(new Tema("Skip List"));
 		eda.addTema(new Tema("Tabela Hash"));
 		eda.addTema(new Tema("AVL"));
-		eda.addTema(new Tema("Árvores"));
+		eda.addTema(new Tema("Ã�rvores"));
+
+		eda.getTemaByNome("HEAPS").addDica(new DicaMaterial("http://pages.cs.wisc.edu/~paton/readings/Old/fall01/HEAP-SORT.htm"));
+		eda.getTemaByNome("Skip List").addDica(new DicaMaterial("https://www.quora.com/What-uses-are-there-for-Skip-Lists"));
+
 		dao.persist(eda);
 
-		Disciplina p2 = new Disciplina("Programação II");
-		p2.addTema(new Tema("Introdução a Java"));
-		p2.addTema(new Tema("Introdução a OO"));
-		p2.addTema(new Tema("Criação de Classes"));
+		Disciplina p2 = new Disciplina("ProgramaÃ§Ã£o II");
+		p2.addTema(new Tema("IntroduÃ§Ã£o a Java"));
+		p2.addTema(new Tema("IntroduÃ§Ã£o a OO"));
+		p2.addTema(new Tema("CriaÃ§Ã£o de Classes"));
 		p2.addTema(new Tema("Testes de unidade"));
-		p2.addTema(new Tema("Coleções"));
-		p2.addTema(new Tema("Reuso, Composição e Herança"));
-		p2.addTema(new Tema("Herança e polimorfismo"));
+		p2.addTema(new Tema("ColeÃ§Ãµes"));
+		p2.addTema(new Tema("Reuso, ComposiÃ§Ã£o e HeranÃ§a"));
+		p2.addTema(new Tema("HeranÃ§a e polimorfismo"));
 		p2.addTema(new Tema("Interfaces e polimorfismo"));
-		p2.addTema(new Tema("Tratamento de erros e exceções"));
+		p2.addTema(new Tema("Tratamento de erros e exceÃ§Ãµes"));
 		p2.addTema(new Tema("Recursividade"));
+		
+		p2.getTemaByNome("HeranÃ§a e polimorfismo").addDica(new DicaAssunto("É útil para padrões de projeto."));
+		p2.getTemaByNome("Testes de unidade").addDica(new DicaConselho("Importante para os seus colegas entenderem a funcionalidade do seu código."));
+		
 		dao.persist(p2);
+		
 		dao.flush();
 	}
 

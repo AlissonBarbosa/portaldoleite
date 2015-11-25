@@ -80,7 +80,13 @@
             			</div>
             			<div id="dicasList">
             				@if(temaAtual.getDicas().isEmpty()){
-								<p>Este tema ainda não possui nenhuma dica.</p>
+								<p>Este tema ainda não possui dica.</p>
+							} else {
+								<!--
+								@for(dicas <- temaAtual.getDicas()){
+									
+								}
+								-->
 							}
 	            			@for(dica <- temaAtual.getDicas()){
 	            			<div class="uk-panel uk-panel-box dica" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}">
