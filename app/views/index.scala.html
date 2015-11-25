@@ -33,18 +33,11 @@
             			<div class="uk-panel-header">
             				<h3 class="uk-panel-title">Menu</h3>
             			</div>
-                        <div class="uk-button-dropdown uk-align-left" data-uk-dropdown="{mode:'click'}">
-                            <button class="uk-button uk-button-link uk-align-left"> Disciplinas
-            		        <i class="uk-icon-caret-down"></i>
-            				</button>
-            				<div class="uk-dropdown">
-            				    <ul class="uk-nav uk-nav-dropdown uk-text-center">
-                                    @for(disciplina <- disciplinas){
-                                        <li class="uk-nav-header"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
-                                    }
-                                </ul>
-            				</div>
-                        </div>
+            		    <ul class="uk-nav uk-nav-dropdown uk-text-center">
+                            @for(disciplina <- disciplinas){
+                                <li class="uk-nav-header"><a href="/disciplina/@disciplina.getId()">@disciplina.getNome()</a></li>
+                            }
+                        </ul>
             		</div>
             	</div>
             	<!-- ---------------- MAIN CONTENT ---------------- -->
