@@ -143,7 +143,7 @@ public class Global extends GlobalSettings {
 		p2.getTemaByNome("Herança e polimorfismo").addDica(dica4);
 		dao.persist(dica4);
 
-		Dica dica5 = new DicaConselho("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
+		Dica dica5 = new DicaConselho("Essencial para os seus colegas estarem a par com o seu código rapidamente.");
 		dica5.setTema(p2.getTemaByNome("Testes de unidade"));
 		dica5.setUser("The Penguin");
 		dica5.setConcordancias(2);
