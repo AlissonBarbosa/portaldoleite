@@ -49,7 +49,37 @@
 	            			</div>
             				<hr class="uk-article-divider-orange">
             			</div>
-            			<p>Escolha uma disciplina ao lado para acessar os leites.</p>
+            			<!-- <p>Escolha uma disciplina ao lado para acessar os leites.</p> -->
+                        <div class="container">
+                            <ul class="timeline">
+                                <li>
+                                <!-- font awesome example -->
+                                    <div class="timeline-badge warning"><i class="fa fa-map"></i></div>
+                                    <h1 class="panel-heading">Dicas</h1>
+                                </li>
+                                @for(disciplina <- disciplinas){
+                                    @for(tema <- disciplina.getTemas()){
+                                        @for(dica <- tema.getDicas()){
+                                            <li>
+                                                <div class="timeline-badge warning-circ"></div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="timeline-title">@disciplina.getNome - @tema.getName()</h4>
+                                                        </div>
+                                                    <div class="timeline-body">
+                                                        <p>@dica.getTexto</p>
+                                                        <p class="uk-text-center">Ver mais</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+
+            		<!-- isso ja existe -->
             		</div>
             	</div>
             </div>
