@@ -161,7 +161,7 @@ public class Global extends GlobalSettings {
 		dica4.setDiscordancias(0);
 		dao.persist(dica4);
 
-		Dica dica5 = new DicaConselho("Aprender usar testes de unidades facilita demais a vida de qualquer programador");
+		Dica dica5 = new DicaConselho("Essencial para os seus colegas estarem a par com o seu código rapidamente.");
 		dica5.setTema(p2.getTemaByNome("Testes de unidade"));
 		dica5.setUser("The Penguin");
 		dica5.setConcordancias(2);
