@@ -34,9 +34,10 @@ public class Global extends GlobalSettings {
 			public void invoke() throws Throwable {
 				if(dao.findAllByClassName(Disciplina.class.getName()).size() == 0){
 					criaDisciplinaTemas();
+					addUsuario();
+					addDisciplinaTemaDicaEda();
+					addDisciplinaTemaDicaP2();
 				}
-				addUsuario();
-				addDica();
 			}
 		});
 	}
@@ -69,8 +70,20 @@ public class Global extends GlobalSettings {
 		si1.addTema(new Tema("Labs"));
 		si1.addTema(new Tema("Minitestes"));
 		si1.addTema(new Tema("Projeto"));
-		dao.persist(si1);
 
+		// Dicas para SI1
+		Dica dica1 = new DicaConselho("Melhor começar o quanto antes.");
+		dica1.setTema(si1.getTemaByNome("Labs"));
+		dica1.setUser("Antonio");
+		dica1.setConcordancias(1);
+		dica1.setDiscordancias(1);
+		dao.persist(dica1);
+
+		dao.persist(si1);
+		dao.flush();
+	}
+
+	private void addDisciplinaTemaDicaEda(){
 		Disciplina eda = new Disciplina("Estrutuda de Dados");
 		eda.addTema(new Tema("Notação Assintótica"));
 		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
@@ -84,8 +97,28 @@ public class Global extends GlobalSettings {
 		eda.addTema(new Tema("Tabela Hash"));
 		eda.addTema(new Tema("AVL"));
 		eda.addTema(new Tema("Árvores"));
+
+		// Dicas para EDA
+		Dica dica2 = new DicaMaterial("http://pages.cs.wisc.edu/~paton/readings/Old/fall01/HEAP-SORT.htm");
+		dica2.setTema(eda.getTemaByNome("HEAPS"));
+		dica2.setUser("Hulk");
+		dica2.setConcordancias(1);
+		dica2.setDiscordancias(2);
+		dao.persist(dica2);
+
+		Dica dica3 = new DicaMaterial("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
+		dica3.setTema(eda.getTemaByNome("Skip List"));
+		dica3.setUser("Fenix");
+		dica3.setConcordancias(5);
+		dica3.setDiscordancias(2);
+		dao.persist(dica3);
+
 		dao.persist(eda);
 
+		dao.flush();
+	}
+
+	private void addDisciplinaTemaDicaP2(){
 		Disciplina p2 = new Disciplina("Programação II");
 		p2.addTema(new Tema("Introdução a Java"));
 		p2.addTema(new Tema("Introdução a OO"));
@@ -97,8 +130,23 @@ public class Global extends GlobalSettings {
 		p2.addTema(new Tema("Interfaces e polimorfismo"));
 		p2.addTema(new Tema("Tratamento de erros e exceções"));
 		p2.addTema(new Tema("Recursividade"));
+
+		// Dicas para P2
+		Dica dica4 = new DicaAssunto("É útil para padrões de projeto.");
+		dica4.setTema(p2.getTemaByNome("Herança e polimorfismo"));
+		dica4.setUser("Mariana");
+		dica4.setConcordancias(2);
+		dica4.setDiscordancias(0);
+		dao.persist(dica4);
+
+		Dica dica5 = new DicaConselho("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
+		dica5.setTema(p2.getTemaByNome("Testes de unidade"));
+		dica5.setUser("The Penguin");
+		dica5.setConcordancias(2);
+		dica5.setDiscordancias(4);
+		dao.persist(dica5);
+
 		dao.persist(p2);
-		
 		dao.flush();
 	}
 
@@ -144,45 +192,5 @@ public class Global extends GlobalSettings {
 		dao.persist(usuario10);
 	}
 
-	private void addDica(){
-		// Dicas para SI
-		Dica dica1 = new DicaConselho("Melhor começar o quanto antes.");
-		dica1.setTema(si1.getTemaByNome("Labs"));
-		dica1.setUser("Antonio");
-		dica1.setConcordancias(1);
-		dica1.setDiscordancias(1);
-		dao.persist(dica1);
 
-		// Dicas para EDA
-		Dica dica2 = new DicaMaterial("http://pages.cs.wisc.edu/~paton/readings/Old/fall01/HEAP-SORT.htm");
-		dica2.setTema(eda.getTemaByNome("HEAPS"));
-		dica2.setUser("Hulk");
-		dica2.setConcordancias(1);
-		dica2.setDiscordancias(2);
-		dao.persist(dica2);
-		
-		Dica dica3 = new DicaMaterial("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
-		dica3.setTema(eda.getTemaByNome("Skip List"));
-		dica3.setUser("Fenix");
-		dica3.setConcordancias(5);
-		dica3.setDiscordancias(2);
-		dao.persist(dica3);
-		
-		// Dicas para P2
-		Dica dica4 = new DicaAssunto("É útil para padrões de projeto.");
-		dica4.setTema(p2.getTemaByNome("Herança e polimorfismo"));
-		dica4.setUser("Mariana");
-		dica4.setConcordancias(2);
-		dica4.setDiscordancias(0);
-		dao.persist(dica4);
-
-		Dica dica5 = new DicaConselho("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
-		dica5.setTema(p2.getTemaByNome("Testes de unidade"));
-		dica5.setUser("The Penguin");
-		dica5.setConcordancias(2);
-		dica5.setDiscordancias(4);
-		dao.persist(dica5);
-
-	}
-	
 }
