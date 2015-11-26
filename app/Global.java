@@ -33,10 +33,10 @@ public class Global extends GlobalSettings {
 			@Override
 			public void invoke() throws Throwable {
 				if(dao.findAllByClassName(Disciplina.class.getName()).size() == 0){
-					criaDisciplinaTemas();
-					addUsuario();
+					addDisciplinaTemaSi1();
 					addDisciplinaTemaDicaEda();
 					addDisciplinaTemaDicaP2();
+					addUsuario();
 				}
 			}
 		});
@@ -56,7 +56,7 @@ public class Global extends GlobalSettings {
 	    }}); 
 	}
 	
-	private void criaDisciplinaTemas(){
+	private void addDisciplinaTemaSi1(){
 		Disciplina si1 = new Disciplina("Sistemas de Informação 1");
 		si1.addTema(new Tema("Análise x Design"));
 		si1.addTema(new Tema("Orientação a objetos"));
@@ -77,8 +77,9 @@ public class Global extends GlobalSettings {
 		dica1.setUser("Antonio");
 		dica1.setConcordancias(1);
 		dica1.setDiscordancias(1);
-		dao.persist(dica1);
+		si1.getTemaByNome("Labs").addDica(dica1);
 
+		dao.persist(dica1);
 		dao.persist(si1);
 		dao.flush();
 	}
@@ -104,6 +105,7 @@ public class Global extends GlobalSettings {
 		dica2.setUser("Hulk");
 		dica2.setConcordancias(1);
 		dica2.setDiscordancias(2);
+		eda.getTemaByNome("HEAPS").addDica(dica2);
 		dao.persist(dica2);
 
 		Dica dica3 = new DicaMaterial("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
@@ -111,6 +113,7 @@ public class Global extends GlobalSettings {
 		dica3.setUser("Fenix");
 		dica3.setConcordancias(5);
 		dica3.setDiscordancias(2);
+		eda.getTemaByNome("Skip List").addDica(dica3);
 		dao.persist(dica3);
 
 		dao.persist(eda);
@@ -137,6 +140,7 @@ public class Global extends GlobalSettings {
 		dica4.setUser("Mariana");
 		dica4.setConcordancias(2);
 		dica4.setDiscordancias(0);
+		p2.getTemaByNome("Herança e polimorfismo").addDica(dica4);
 		dao.persist(dica4);
 
 		Dica dica5 = new DicaConselho("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
@@ -144,9 +148,11 @@ public class Global extends GlobalSettings {
 		dica5.setUser("The Penguin");
 		dica5.setConcordancias(2);
 		dica5.setDiscordancias(4);
+		p2.getTemaByNome("Testes de unidade").addDica(dica5);
 		dao.persist(dica5);
 
 		dao.persist(p2);
+		
 		dao.flush();
 	}
 
