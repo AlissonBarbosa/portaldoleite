@@ -77,15 +77,29 @@ public class Global extends GlobalSettings {
 		dica1.setUser("Antonio");
 		dica1.setConcordancias(1);
 		dica1.setDiscordancias(1);
-		si1.getTemaByNome("Labs").addDica(dica1);
-
 		dao.persist(dica1);
+
+		Dica dica2 = new DicaConselho("Fazendo os Labs completos, você vai ter muito mais facilidade no projeto");
+		dica2.setTema(si1.getTemaByNome("Projeto"));
+		dica2.setUser("Hulk");
+		dica2.setConcordancias(1);
+		dica2.setDiscordancias(1);
+		dica2.setDiscordancias(1);
+		dao.persist(dica2);
+
+		Dica dica3 = new DicaMaterial("http://bit.ly/1LCj8bs");
+		dica3.setTema(si1.getTemaByNome("Heroku"));
+		dica3.setUser("Fenix");
+		dica3.setConcordancias(5);
+		dica3.setDiscordancias(2);
+		dao.persist(dica3);
+
 		dao.persist(si1);
 		dao.flush();
 	}
 
 	private void addDisciplinaTemaDicaEda(){
-		Disciplina eda = new Disciplina("Estrutuda de Dados");
+		Disciplina eda = new Disciplina("Estrutura de Dados");
 		eda.addTema(new Tema("Notação Assintótica"));
 		eda.addTema(new Tema("Análise de Algoritmos Recursivos"));
 		eda.addTema(new Tema("Ordenação por comparação"));
@@ -105,7 +119,6 @@ public class Global extends GlobalSettings {
 		dica2.setUser("Hulk");
 		dica2.setConcordancias(1);
 		dica2.setDiscordancias(2);
-		eda.getTemaByNome("HEAPS").addDica(dica2);
 		dao.persist(dica2);
 
 		Dica dica3 = new DicaMaterial("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
@@ -113,8 +126,14 @@ public class Global extends GlobalSettings {
 		dica3.setUser("Fenix");
 		dica3.setConcordancias(5);
 		dica3.setDiscordancias(2);
-		eda.getTemaByNome("Skip List").addDica(dica3);
 		dao.persist(dica3);
+
+		Dica dica4 = new DicaConselho("Boa sorte!!!");
+		dica4.setTema(eda.getTemaByNome("AVL"));
+		dica4.setUser("The Penguin");
+		dica4.setConcordancias(2);
+		dica4.setDiscordancias(4);
+		dao.persist(dica4);
 
 		dao.persist(eda);
 
@@ -140,15 +159,13 @@ public class Global extends GlobalSettings {
 		dica4.setUser("Mariana");
 		dica4.setConcordancias(2);
 		dica4.setDiscordancias(0);
-		p2.getTemaByNome("Herança e polimorfismo").addDica(dica4);
 		dao.persist(dica4);
 
-		Dica dica5 = new DicaConselho("https://www.quora.com/What-uses-are-there-for-Skip-Lists");
+		Dica dica5 = new DicaConselho("Aprender usar testes de unidades facilita demais a vida de qualquer programador");
 		dica5.setTema(p2.getTemaByNome("Testes de unidade"));
 		dica5.setUser("The Penguin");
 		dica5.setConcordancias(2);
 		dica5.setDiscordancias(4);
-		p2.getTemaByNome("Testes de unidade").addDica(dica5);
 		dao.persist(dica5);
 
 		dao.persist(p2);

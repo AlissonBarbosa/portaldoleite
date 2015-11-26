@@ -57,9 +57,7 @@
                                     <div class="timeline-badge warning"><i class="fa fa-map"></i></div>
                                     <h1 class="panel-heading">Dicas</h1>
                                 </li>
-                                @for(disciplina <- disciplinas){
-                                    @for(tema <- disciplina.getTemas()){
-                                        @for(dica <- tema.getDicas()){
+                                         @for((disciplina, tema, dica) <- ((for (disc <- disciplinas; t <- disc.getTemas; dica <- t.getDicas) yield (disc, t, dica)).sortWith((t1, t2) => { t1._3.getId > t2._3.getId}).take(10))){
                                             <li>
                                                 <div class="timeline-badge warning-circ"></div>
                                                     <div class="timeline-panel">
@@ -72,8 +70,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        }
-                                    }
+
                                 }
                             </ul>
                         </div>
