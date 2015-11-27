@@ -56,6 +56,12 @@
                                 <!-- font awesome example -->
                                     <div class="timeline-badge warning"><i class="fa fa-map"></i></div>
                                     <h1 class="panel-heading">Dicas</h1>
+                                    
+                                    	<select class="form-control" id="mostrarDicas">
+                                    		<option value="ultimasDicas">Últimas dicas</option>
+                                    		<option value="melhorAvaliacao">Melhor avaliação</option>
+                                    		<option value="piorAvaliacao">Pior avaliação</option>
+                                    	</select>
                                 </li>
                                          @for((disciplina, tema, dica) <- ((for (disc <- disciplinas; t <- disc.getTemas; dica <- t.getDicas) yield (disc, t, dica)).sortWith((t1, t2) => { t1._3.getId > t2._3.getId}).take(10))){
                                             <li>
