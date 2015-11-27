@@ -1,5 +1,5 @@
-@(disciplinas: List[Disciplina])
-
+@(disciplinas: List[Disciplina], dicasOrdenadas: List[Dica])
+@sidebar = { teste }
 <!DOCTYPE html>
 
 <html>
@@ -53,17 +53,16 @@
                         <div class="container">
                             <ul class="timeline">
                                 <li>
-                                <!-- font awesome example -->
+                                    <!-- font awesome example -->
                                     <div class="timeline-badge warning"><i class="fa fa-map"></i></div>
-                                    <h1 class="panel-heading">Dicas</h1>
-                                    
-                                    	<select class="form-control" id="mostrarDicas">
-                                    		<option value="ultimasDicas">Últimas dicas</option>
-                                    		<option value="melhorAvaliacao">Melhor avaliação</option>
-                                    		<option value="piorAvaliacao">Pior avaliação</option>
-                                    	</select>
+                                        <h1 class="panel-heading">Dicas</h1>
+                                    	    <select class="uk-button uk-form-select" id="mostrarDicas">
+                                    		    <option value="ultimasDicas">Últimas dicas</option>
+                                    		    <option value="melhorAvaliacao">Melhor avaliação</option>
+                                    		    <option value="piorAvaliacao">Pior avaliação</option>
+                                    	    </select>
                                 </li>
-                                         @for((disciplina, tema, dica) <- ((for (disc <- disciplinas; t <- disc.getTemas; dica <- t.getDicas) yield (disc, t, dica)).sortWith((t1, t2) => { t1._3.getId > t2._3.getId}).take(10))){
+                                        @for((disciplina, tema, dica) <- ((for (disc <- disciplinas; t <- disc.getTemas; dica <- t.getDicas) yield (disc, t, dica)).sortWith((t1, t2) => { t1._3.getId > t2._3.getId}).take(10))){
                                             <li>
                                                 <div class="timeline-badge warning-circ"></div>
                                                     <div class="timeline-panel">
@@ -72,19 +71,22 @@
                                                         </div>
                                                     <div class="timeline-body">
                                                         <p>@dica.getTexto</p>
-                                                        <p class="uk-text-center">Ver mais</p>
+                                                        <a data-uk-modal="{target:'#dica-detalhes-modal'}" id="@disciplina.getNome">Ver mais</a>
                                                     </div>
                                                 </div>
                                             </li>
-
-                                }
+                                        }
                             </ul>
                         </div>
-
-
             		<!-- isso ja existe -->
             		</div>
             	</div>
+            </div>
+        </div>
+        <div id="dica-detalhes-modal" class="uk-modal">
+            <div class="uk-modal-dialog">
+                <a class="uk-modal-close uk-close"></a>
+                <div class="uk-modal-header" style="background-color:#5f5f5f"><h2>Nome da Disciplina</h2></div>
             </div>
         </div>
     </body>

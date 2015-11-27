@@ -1,17 +1,11 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import models.Dica;
-import models.DicaAssunto;
-import models.DicaConselho;
-import models.DicaDisciplina;
-import models.DicaMaterial;
-import models.Disciplina;
-import models.MetaDica;
-import models.Tema;
+import models.*;
 import models.dao.GenericDAOImpl;
 import play.Logger;
 import play.data.DynamicForm;
@@ -29,7 +23,9 @@ public class Application extends Controller {
 	@Security.Authenticated(Secured.class)
     public static Result index() {
 		List<Disciplina> disciplinas = dao.findAllByClassName(Disciplina.class.getName());
-        return ok(views.html.index.render(disciplinas));
+		OrdenadorDeDicasPorInsercao ordenador = new OrdenadorDeDicasPorInsercao();
+		List<Dica> dicasOrdenadas = ordenador.ordenaDicas(disciplinas);
+        return ok(views.html.index.render(disciplinas, dicasOrdenadas));
     }
 	
 	@Transactional

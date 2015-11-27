@@ -1,16 +1,10 @@
 package models;
 
-public abstract class OrdenadorDeDicas {
-	
-	String tipoDeOrdenacao;
-	
-	public String getTipoDeOrdenacao() {
-		return tipoDeOrdenacao;
-	}
+import java.util.List;
+import java.util.Map;
 
-	public void setTipoDeOrdenacao(String tipoDeOrdenacao) {
-		this.tipoDeOrdenacao = tipoDeOrdenacao;
-	}
+public interface OrdenadorDeDicas {
 
-	public abstract void ordenaDicas();
+	List<Dica> ordenaDicas(List<Disciplina> lista);
+
 }

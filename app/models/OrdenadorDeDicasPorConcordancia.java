@@ -3,13 +3,13 @@ package models;
 import java.util.Collections;
 import java.util.List;
 
-public class OrdenadorDeDicasPorConcordancia extends OrdenadorDeDicas {
+public class OrdenadorDeDicasPorConcordancia implements OrdenadorDeDicas {
 
 	private List<Dica> dicas;
 
-	public void ordenaDicas() {
-		if(this.tipoDeOrdenacao == "concordancia") {
-			Collections.sort(dicas); //muda a ordem do array para o contrario se quiser pegar os mais discordados
-		}
+
+	@Override
+	public List<Dica> ordenaDicas(List<Disciplina> lista) {
+		return null;
 	}
 }
